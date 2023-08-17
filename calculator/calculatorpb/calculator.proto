@@ -13,6 +13,33 @@ message SumResponse {
     int32 result = 1;
 }
 
+message PNDRequest {
+    int32 number = 1;
+}
+
+message PNDResponse {
+    int32 result = 1;
+}
+
+message AverageRequest {
+    float num = 1;
+}
+
+message AverageResponse {
+    float result = 1; 
+}
+
+message MaxRequest{
+    int32 num = 1;
+}
+
+message MaxResponse {
+    int32 num = 1;
+}
+
 service CalculatorService {
     rpc Sum(SumRequest) returns (SumResponse) {}
+    rpc PrimeNumberDecomposition(PNDRequest) returns (stream PNDResponse) {}
+    rpc Average(stream AverageRequest) returns (AverageResponse) {}
+    rpc Max(stream MaxRequest) returns (stream MaxResponse) {}
 }
